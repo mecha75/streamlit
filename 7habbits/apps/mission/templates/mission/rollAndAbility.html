@@ -1,0 +1,55 @@
+{% extends "mission/base.html" %}
+{% block title %} mission {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <button type="button" class="btn btn-secondary">{{current_user.username}}님의 역할 및 역량</button>
+    <div class="container-fluid">
+    <div class="row align-items-start">
+    <div class="col-sm-6">
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">개인의 역할</button>
+            <p class="card-text" style="white-space: pre-wrap; ">{{answer[0][1]}}</p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">잘하는 것</button>
+            <p class="card-text" style="white-space: pre-wrap; ">{{answer[0][2]}}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="col-sm-6">
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">잘하고 싶은 것</button>
+            <p class="card-text" style="white-space: pre-wrap; ">{{answer[0][3]}}</p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">약점</button>
+            <p class="card-text" style="white-space: pre-wrap; ">{{answer[0][4]}}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}

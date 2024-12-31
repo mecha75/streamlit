@@ -1,0 +1,155 @@
+body {
+    background-color: #f5f5f5;
+}
+h4 {
+   margin-top: 20px;
+}
+input[type="search"] {
+    background-color: #f5f5f5;
+}
+.dt-auth-main {
+    width: 400px;
+    margin-top: 45px;
+}
+.dt-auth-main .card {
+    box-shadow: 0 12px 18px 2px rgba(34, 0, 51, 0.04), 0 6px 22px 4px
+    rgba(7, 48, 114, 0.12),
+    0 6px 10px -4px rgba(14, 13, 26, 0.12) !important;
+    border-radius: 16px;
+}
+.dt-auth-main .dt-auth-login {
+    height: 300px !important;
+}
+.dt-auth-main .dt-auth-signup {
+    height: 340px !important;
+}
+.dt-auth-main header {
+    text-align: center;
+    margin: 30px 0 0 0;
+    font-size: 24px;
+}
+.dt-auth-main section {
+    width: 300px;
+    margin: 10px auto;
+}
+.dt-auth-flash {
+    font-size: 14px;
+    color: #9c1a1c;
+}
+.dt-auth-input {
+        margin-top: 10px;
+}
+.dt-auth-btn {
+    margin: 30px 0 0 0;
+}
+.dt-search {
+    height: 28px !important;
+}
+.dt-image-content {
+    margin: 20px auto;
+    padding: 0;
+}
+.dt-image-username {
+    padding-top: 15px;
+}
+.dt-image-register-btn {
+    padding: 10px 47px 0 0;
+}
+.dt-image-content header {
+    padding: 10px 10px 0 10px;
+}
+.dt-image-content section {
+    padding: 10px 0;
+    margin: auto;
+}
+.dt-image-content footer {
+    padding: 10px;
+}
+.dt-image-content section img {
+    width: 100%;
+}
+.dt-image-file {
+    display: none;
+}
+.dt-image-submit {
+    margin-left: 10px;
+}
+
+.modalDiv{
+    display: none;
+    position:absolute;
+    justify-content: center;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalBody{
+    position:absolute;
+    justify-content: center;
+    top:50%;
+    left: 25%;
+    width:400px;
+    height:600px;
+
+    padding:40px;  
+
+    text-align: center;
+
+    background-color: rgb(255,255,255); 
+    border-radius:10px; 
+    box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); 
+
+    transform:translateY(-50%); 
+}
+
+#role_target, #habbit7_target, #week_summary_target, #thisweek_activity_target {
+    display: none;
+}
+
+.origin {
+    display: block;
+}
+
+.main_screen{
+    height: 90vh;
+    width: 100vw;
+    background-image: url('http://www.tachyon.or.kr/static/files/main_screen.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main_message{
+    text-align: center;
+}
+
+.txt{
+    width:15vw;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.txt_area{
+    width: 28vw;
+    height: 5rem;
+    margin-top: 0;
+}
+#remove1{
+    display: none;
+}
+
+#state11{
+    height: 50vh;
+    overflow: scroll;
+}
+
+.disabled{
+    display: none;
+}
+
+#thisweek_activity_target_text{
+    width: 100%;
+    height: 15rem;
+}

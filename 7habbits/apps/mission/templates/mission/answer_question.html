@@ -1,0 +1,106 @@
+{% extends "mission/base.html" %}
+{% block title %} Mission Statement 입력 {% endblock %}
+
+{% block content %}
+
+<form action="{{ url_for('mission.findprecious') }}"
+    method="POST"
+    novalidate="novalidate"
+>
+    {{ form.csrf_token }}
+
+    <div class="container">
+        <div class="container">
+            <div class="card" style="width: inherit; ">
+                <div class="card-body">
+                <h5 class="card-title">{{ question[0] }}</h5>
+                <div class="container">
+                    {{ form.NO1(placeholder="1번 질문에 답하시오", class = "form-control", rows = "7") }}
+                </div>
+                {% for error in form.NO1.errors %}
+                <span style="color:red;">{{error}}</span>
+                {% endfor %}
+                </div>
+            </div>
+        </div>    
+        <p></p>
+        <div class="container">
+            <div class="card" style="width: inherit; ">
+                <div class="card-body">
+                <h5 class="card-title">{{ question[1] }}</h5>
+                <div class="container">
+                    {{ form.NO2(placeholder="2번 질문에 답하시오", class = "form-control", rows = "7") }}
+                </div>
+                {% for error in form.NO1.errors %}
+                <span style="color:red;">{{error}}</span>
+                {% endfor %}
+                </div>
+            </div>
+        </div>    
+        <p></p>
+        <div class="container">
+            <div class="card" style="width: inherit; ">
+                <div class="card-body">
+                <h5 class="card-title">{{ question[2] }}</h5>
+                <div class="container">
+                    {{ form.NO3(placeholder="3번 질문에 답하시오", class = "form-control", rows = "7") }}
+                </div>
+                {% for error in form.NO1.errors %}
+                <span style="color:red;">{{error}}</span>
+                {% endfor %}
+                </div>
+            </div>
+        </div>    
+        <p></p>
+        <div class="container">
+            <div class="card" style="width: inherit; ">
+                <div class="card-body">
+                <h5 class="card-title">{{ question[3] }}</h5>
+                <div class="container">
+                    {{ form.NO4(placeholder="4번 질문에 답하시오", class = "form-control", rows = "7") }}
+                </div>
+                {% for error in form.NO1.errors %}
+                <span style="color:red;">{{error}}</span>
+                {% endfor %}
+                </div>
+            </div>
+        </div>    
+        <p></p>
+        <div class="container">
+            <div class="card" style="width: inherit; ">
+                <div class="card-body">
+                <h5 class="card-title">{{ question[4] }}</h5>
+                <div class="container">
+                    {{ form.NO5(placeholder="5번 질문에 답하시오", class = "form-control", rows = "7") }}
+                </div>
+                {% for error in form.NO1.errors %}
+                <span style="color:red;">{{error}}</span>
+                {% endfor %}
+                </div>
+            </div>
+        </div>    
+        <p></p>
+        <div class="container">
+            <div class="card" style="width: inherit; ">
+                <div class="card-body">
+                <h5 class="card-title">{{ question[5] }}</h5>
+                <div class="container">
+                    {{ form.NO6(placeholder="6번 질문에 답하시오", class = "form-control", rows = "7") }}
+                </div>
+                {% for error in form.NO1.errors %}
+                <span style="color:red;">{{error}}</span>
+                {% endfor %}
+                </div>
+            </div>
+        </div>    
+        <p></p>
+    </div>
+        <p></p>
+
+        <p><input class="btn btn-danger" type="submit" value={{nbutton}} style="float: right;"/></p>
+        </div>
+
+    
+</form>
+
+{% endblock %}

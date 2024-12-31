@@ -1,0 +1,129 @@
+{% extends "mission/base.html" %}
+{% block title %} Mission Statement 입력 {% endblock %}
+
+{% block content %}
+
+<form action="{{ url_for('mission.writeMission') }}"
+    method="POST"
+    novalidate="novalidate"
+>
+    {{ form.csrf_token }}
+
+    <div class="container">
+        <div class="container">
+            <div class="card" style="width: inherit; ">
+                <div class="card-body">
+                <h5 class="card-title">{{ form.mission_statement.label }}</h5>
+                <div class="container">
+                    {{ form.mission_statement(placeholder="사명선언서를 작성하십시요", class = "form-control", rows = "7") }}
+                </div>
+                {% for error in form.mission_statement.errors %}
+                <span style="color:red;">{{error}}</span>
+                {% endfor %}
+            </div>
+        </div>    
+    </div>
+        <p></p>
+        <div class="container">
+            <div class="row align-items-start">
+            <div class="col-sm-6">
+                <div class="container">
+                <div class="card" style="width: inherit;">
+                    <div class="card-body" id="state11">
+                      <h5 class="card-title">역할별 선언서</h5>
+                      <div class="disabled">
+                        <textarea name="roleTotal" id="roleTotal"></textarea>
+                      </div>
+                        <div> <input type="button" id="add_mission" value="역할 추가하기 &#10133;">
+                          <!-- <div class="role" id="role1">
+                              <input class="txt" type="text" name="" id="role1_text" placeholder="역할을 선언하십시요."> 
+                              <input type="button" id="remove1" value="삭제 &#10134;"><br>
+                              <textarea class="txt_area" name="" id="role1_area" placeholder="사명선언서를 적어넣으세요."></textarea>
+                          </div> -->
+                          {% for check_r in RnM%}
+                            <div class="role" id="{{check_r[0]}}">
+                              <input class="txt" type="text" name="" id="{{check_r[0]}}_text" placeholder="역할을 선언하십시요." value="{{check_r[1]}}"> 
+                              <input type="button" id="remove{{check_r[0][4]}}" value="삭제 &#10134;"><br>
+                              <textarea class="form-control" name="" id="{{check_r[0]}}_area" placeholder="사명선언서를 적어넣으세요." >{{check_r[2]}}</textarea>                              
+                            </div>
+                          {% endfor %}
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="align-items: end;">
+                <div class="container">
+                <div class="card" style="width: inherit;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{form.extra_statement.label}}</h5>
+                      <p class="card-text">{{form.extra_statement(placeholder="부칙을 입력하십시요.(optional)",class = "form-control", rows = "15")}}</p>
+                      {% for error in form.extra_statement.errors %}
+                      <span style="color:red;">{{error}}</span>
+                      {% endfor %}
+                  
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <p><input class="btn btn-danger" type="submit" value={{nbutton}} style="float: right;"/></p>
+        </div>
+</form>
+<script>
+  let idNum = {{ max_r }};
+  const dic1 = {};
+  const roleTot = document.querySelector('#roleTotal')
+  function test(e) {
+    console.log(e.target.parentElement.childNodes[6]);
+  }
+  function chgRole1(e){
+      const targetE = e.target.parentElement;
+      dic1[targetE.id] = [targetE.childNodes[1].value, targetE.childNodes[6].value]
+      roleTot.value = JSON.stringify(dic1);
+  }
+  function add_role() {
+      idNum++;
+      const target_base = document.querySelector('#role1');
+      const newNode = target_base.cloneNode(true);
+      console.log(target_base.parentElement)
+      target_base.parentElement.appendChild(newNode);
+      newNode.id = 'role' + idNum;
+      newNode.childNodes[3].id = 'remove' + idNum;
+      newNode.childNodes[3].addEventListener('click', sub_role);
+      newNode.childNodes[1].id = 'role' + idNum + '_text';
+      newNode.childNodes[6].id = 'role' + idNum + '_area';
+      newNode.childNodes[1].value = '';
+      newNode.childNodes[6].value = '';
+      newNode.childNodes[1].addEventListener('change',chgRole1);
+      newNode.childNodes[6].addEventListener('change',chgRole1);
+  }
+  function sub_role(e){
+      const delNode = e.target.parentElement;
+      const delId = delNode.id;
+      delNode.parentElement.removeChild(delNode);
+      delete dic1[delId];
+      roleTot.value = JSON.stringify(dic1);
+  }
+  const add_button = document.querySelector('#add_mission');
+  const button_grp = {};
+  // const sub_button = document.querySelector('#remove1');
+  add_button.addEventListener('click',add_role);
+  {% for check_r in RnM %}
+    button_grp['sub_button'+{{check_r[0][4]}}] = document.querySelector('#remove{{check_r[0][4]}}');
+    button_grp['sub_button'+{{check_r[0][4]}}].addEventListener('click',sub_role);
+    dic1['{{check_r[0]}}'] =[`{{check_r[1]}}`,`{{check_r[2]}}`];
+    roleTot.value = JSON.stringify(dic1);
+    button_grp['{{check_r[0]}}_text'] = document.querySelector('#{{check_r[0]}}_text');
+    button_grp['{{check_r[0]}}_area'] = document.querySelector('#{{check_r[0]}}_area');
+    button_grp['{{check_r[0]}}_text'].addEventListener('change',chgRole1);
+    button_grp['{{check_r[0]}}_area'].addEventListener('change',chgRole1);
+  {% endfor %}
+  // const changeRole = document.querySelector('#role1_text');
+  // const changeRoleArea = document.querySelector('#role1_area');
+  // changeRole.addEventListener('change',chgRole1)
+  // changeRoleArea.addEventListener('change',chgRole1)
+</script>
+
+{% endblock %}

@@ -1,0 +1,442 @@
+{% extends "mission/base.html" %}
+
+{% block title %} Weekly Diary {% endblock %}
+
+
+{% block header %}
+<!--  csrf token  -->
+
+  <!-- <meta id="_csrf" name="_csrf" content="{{csrf_token}}"/>
+  <meta id="_csrf_header" name="_csrf_header" content="{{csrf_headerName}}"/> -->
+
+{% endblock %}
+
+{% block content %}
+
+<body >
+    <div style="display: none;" id="offset">{{offset}}</div>
+    <!-- 모달을 정의하는 부분 -->
+      <div id="offset" value="{{offset}}"></div>
+      <div class="modalDiv">
+        <div class="bg"></div>
+        <div class="modalBody">
+          <div id="role_target">
+              <p name="week">주차:{{week}}</p>
+            <form action="{{ url_for('mission.writePlan') }}"
+              method="POST"
+              novalidate="novalidate">
+              {{form.csrf_token}}
+              <span>역할:</span>
+              <input id="role_target_sub1" name="selection" readonly><br>
+              <span>목표입력:</span>
+              <input type="hidden" name="id1" id="role_id">
+              <input type="hidden" name="email1" id="role_email" value = "{{current_user.email}}">
+              <input type="hidden" name="year1" id="role_year">
+              <input type="hidden" name="week1" id="role_week">
+              <input type="text" name="activity1" id="role_text"><br><br>
+              <input type="hidden" name="status1" id="role_status">
+              <input type="hidden" name="order1" id="role_order">
+              <input type="submit" name="btn_role" value="입력">  
+              <!-- id="submit_role"  -->
+            </form>
+              <button onclick="closeModal()">취소</button>
+          </div>
+          <div id="habbit7_target">
+            <p>주차:{{week}}</p>
+            <form action="{{ url_for('mission.healthPlan') }}"
+              method="POST"
+              novalidate="novalidate">
+              {{form.csrf_token}}
+                  <input type="text" name="activity1" id="text_7th"><br><br>
+                  <input type="hidden" name="id1" id="id_7th">
+                  <input type="hidden" name="email1" id="email_7th" value = "{{current_user.email}}">
+                  <input type="hidden" name="year1" id="year_7th">
+                  <input type="hidden" name="week1" id="week_7th">
+                  <input type="hidden" name="cate1" id="cate_7th">
+              <input type="submit" name="btn_role" id="submit_habbit7" value="입력">
+            </form>
+            <button onclick="closeModal()">취소</button>
+          </div>
+          <div id="week_summary_target">
+            <form action="{{ url_for('mission.writePlan') }}"
+              method="POST"
+              novalidate="novalidate">
+              {{form.csrf_token}}
+              <p>주차:{{week}}</p>
+              <span>역할선택:</span>
+              <select name="selection" id="select_role">
+                {% for i in role%}
+                <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+              </select><br><br>
+              <span>목표입력:</span>
+              <!-- type="text"  -->
+                <input type="text" name="activity1" id="role_week_text"><br><br>
+                <input type="hidden" name="id1" id="role_week_id">
+                <input type="hidden" name="email1" id="role_email" value = "{{current_user.email}}">
+                <input type="hidden" name="year1" id="role_week_year">
+                <input type="hidden" name="week1" id="role_week_week">
+                <input type="hidden" name="status1" id="role_week_status">
+                <input type="hidden" name="order1" id="role_week_order" value="">
+                <input type="submit" name="btn_role" value="입력">
+              <!-- id="submit_week_summary"  -->
+            </form>
+            <button onclick="closeModal()">취소</button>
+          </div>
+
+          <!-- 여기는 fetch를 이용하여 구현하였음 -->
+          <div id="thisweek_activity_target">
+            <p>주차:{{week}}</p>
+            <div id="thisweek_activity_text"></div>
+            <!-- <input type="text" id="thisweek_activity_target_text"> -->
+            <textarea id="thisweek_activity_target_text"></textarea><br><br>
+            <input type="button" name="btn_role" id="submit_thisweek_activity" value="입력">
+            <button onclick="closeModal()">취소</button>
+          </div>
+
+        </div>   
+      </div>
+
+    <!-- Button trigger modal -->
+
+
+    <div class="container-fluid text-center">
+        <div class="row justify-content-md-center">
+            <div class="col col-sm-3">
+                <table class="table table-hover table-bordered">
+                    <col style="width: 10vw;">
+                    <col style="width: 30vw;">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col" colspan="6"><span id="previous" alt="지난주 보기">◁  </span>주간계획표({{week[0]}})<span id="next" alt="다음주 보기">  ▷</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-active">
+                            <th class="border" colspan="1">역할</th>
+                            <td class="border" colspan="5">목표</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" style="font-size: smaller; margin: 0; padding: 0; height: 550px; overflow: auto; background-color: white;">
+                <table class="table table-hover table-bordered" id="role">
+                  <col style="width: 10vw;">
+                  <col style="width: 30vw;">
+                    <tbody>
+                      {% for i in week_act%}
+                        {% for j in week_act[i] %}
+                          {% if j[8] == 1 %}
+                            <tr scope="col" colspan="6">
+                              <th rowspan="4" colspan="1">{{i}}</th>
+                              {% if j[6] == "등록" %}
+                              <td colspan="5" class="role_target1" order1="{{j[8]}}" year1 = "{{year[0]}}" week1="{{week[0]}}" status1="{{j[7]}}" style="padding: 0; color: gainsboro;" role1 = "{{i}}" email1 = "{{j[1]}}" id1 = "{{j[0]}}">{{j[6]}}</td>
+                              {% else %}
+                              <td colspan="5" class="role_target1" order1="{{j[8]}}" year1 = "{{year[0]}}" week1="{{week[0]}}" status1="{{j[7]}}" style="padding: 0;" role1 = "{{i}}" email1 = "{{j[1]}}" id1 = "{{j[0]}}">{{j[6]}}</td>
+                              {% endif %}
+                            </tr>
+                          {% else %}
+                          {% if j[6] == "등록" %}
+                          <tr><td colspan="5" class="role_target2" order1="{{j[8]}}" year1 = "{{year[0]}}" week1="{{week[0]}}" status1="{{j[7]}}" style="padding: 0; color: gainsboro;" role1 = "{{i}}" email1 = "{{j[1]}}" id1 = "{{j[0]}}">{{j[6]}}</td></tr>
+                          {% else %}
+                          <tr><td colspan="5" class="role_target2" order1="{{j[8]}}" year1 = "{{year[0]}}" week1="{{week[0]}}" status1="{{j[7]}}" style="padding: 0;" role1 = "{{i}}" email1 = "{{j[1]}}" id1 = "{{j[0]}}">{{j[6]}}</td></tr>
+                          {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}                      
+                    </tbody>
+                </table>
+                </div>
+
+                <table class="table table-hover table-bordered">
+                    <tbody>
+                        <tr class="table-dark">
+                            <td colspan="6">끊임없이 쇄신하라</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-hover table-bordered" id="habbit7">
+                    <col style="width: 10vw;">
+                    <col style="width: 30vw;">
+                    <tbody>
+                        <tr><td colspan="1" style="padding: 1px;">신체적</td>      <td year1 = "{{year[0]}}" week1="{{week[0]}}" colspan="5" style="padding: 1px;" cate1 = "신체적" id1="{{act7th['신체적'][0]}}" class="physics">{{act7th['신체적'][2]}}</td></tr>
+                        <tr><td colspan="1" style="padding: 1px;">정신/지적</td>   <td year1 = "{{year[0]}}" week1="{{week[0]}}" colspan="5" style="padding: 1px;" cate1 = "정신/지적" id1="{{act7th['정신/지적'][0]}}" class="intelligent">{{act7th['정신/지적'][2]}}</td></tr>
+                        <tr><td colspan="1" style="padding: 1px;">영적</td>        <td year1 = "{{year[0]}}" week1="{{week[0]}}" colspan="5" style="padding: 1px;" cate1 = "영적" id1="{{act7th['영적'][0]}}" class="soul">{{act7th['영적'][2]}}</td></tr>
+                        <tr><td colspan="1" style="padding: 1px;">사회/감정적</td> <td year1 = "{{year[0]}}" week1="{{week[0]}}" colspan="5" style="padding: 1px;" cate1 = "사회/감정적" id1="{{act7th['사회/감정적'][0]}}" class="social">{{act7th['사회/감정적'][2]}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 주별활동 -->
+            <div class="col col-sm-2">
+                <table class="table table-hover table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col" colspan="1">주일({{week[0]}})</th>
+                        </tr>
+                    </thead>
+                    <tbody class = "7">
+                        <tr class="table-active">
+                            <td colspan="1">금주의활동</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" style="margin: 0; padding: 0; height: 800px; overflow: auto; background-color: white;">
+                <table class="table table-hover table-bordered" id="week_summary">
+                  <tbody>
+                    {% for i in overall %}
+                      {% if i[8] == "미등록" %}
+                        <tr class="7"><td class = "week_activity" year1 = "{{year[0]}}" week1="{{week[0]}}" order1="" status1="" style="font-size: smaller; padding: 2px; color: gainsboro;" role1 = "{{i[2]}}" email1 = "{{i[1]}}" id1 = "{{i[0]}}">({{i[2]}})<span>{{i[6]}}</span></td></tr>
+                      {% else %}
+                        <tr class="7"><td class = "week_activity" year1 = "{{year[0]}}" week1="{{week[0]}}" order1="" status1="" style="font-size: smaller; padding: 2px;" role1 = "{{i[2]}}" email1 = "{{i[1]}}" id1 = "{{i[0]}}">({{i[2]}})<span>{{i[6]}}</span></td></tr>
+                      {% endif %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+                </div>
+            </div>
+
+            <!-- 일자별 활동 -->
+            <div class="col col-sm-7">
+                <table class="table table-hover table-bordered">
+                  <colgroup span="6" style="width: 14%;"></colgroup>
+                  <col style="width: 16%;">
+                    <thead class="table-dark">
+                        <tr>
+                          {% for i in weekSet %}
+                            <th scope="col"> {{i['day']}}({{i['date']}}) </th>
+                          {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-active">
+                            <td colspan="7">오늘의 주요활동</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="container" style="margin: 0; padding: 0; height: 800px; overflow: auto; background-color: white;">
+                <table id='thisweek_activity' class="table table-hover table-bordered">
+                    <colgroup span="6" style="width: 14%;"></colgroup>
+                    <col style="width: 16%;">
+                    <tbody>
+                      {% for i in day_act_com%}
+                      <tr class="{{i}}">
+                        {% for j in day_act_com[i] %}
+                          {% if day_act_com[i][j][8] == "미등록" %}
+                          <td class="col" scope="col" style="font-size: small; padding: 1; color: gainsboro;" email1 = "{{day_act_com[i][j][1]}}" id1 = "{{day_act_com[i][j][0]}}" year1 = "{{day_act_com[i][j][2]}}" week1 = "{{day_act_com[i][j][3]}}" date1 = {{day_act_com[i][j][4]}} day1 = "{{day_act_com[i][j][5]}}" time1 = "{{day_act_com[i][j][6]}}">{{day_act_com[i][j][7]}}</td>
+                          {% else %}
+                          <td class="col" scope="col" style="font-size: small; padding: 1;" email1 = "{{day_act_com[i][j][1]}}" id1 = "{{day_act_com[i][j][0]}}" year1 = "{{day_act_com[i][j][2]}}" week1 = "{{day_act_com[i][j][3]}}" date1 = {{day_act_com[i][j][4]}} day1 = "{{day_act_com[i][j][5]}}" time1 = "{{day_act_com[i][j][6]}}">{{day_act_com[i][j][7]}}</td>
+                          {% endif %}
+                        {% endfor %}
+                      </tr>
+                      {% endfor %}
+                        <tr class="table-active">
+                            <td colspan="7">약속 및 실천사항</td>
+                        </tr>
+                      {% for i in day_act_hour %}
+                      <tr class="{{i}}">
+                        {% for j in day_act_hour[i] %}
+                          {% if day_act_hour[i][j][8] == "미등록" %}
+                          <td class="col" scope="col" style="font-size: small; padding: 1; color: gainsboro;" email1 = "{{day_act_hour[i][j][1]}}" id1 = "{{day_act_hour[i][j][0]}}" year1 = "{{day_act_hour[i][j][2]}}" week1 = "{{day_act_hour[i][j][3]}}" date1 = {{day_act_hour[i][j][4]}} day1 = "{{day_act_hour[i][j][5]}}" time1 = "{{day_act_hour[i][j][6]}}">{{day_act_hour[i][j][7]}}</td>
+                          {% else %}
+                          <td class="col" scope="col" style="font-size: small; padding: 1;" email1 = "{{day_act_hour[i][j][1]}}" id1 = "{{day_act_hour[i][j][0]}}" year1 = "{{day_act_hour[i][j][2]}}" week1 = "{{day_act_hour[i][j][3]}}" date1 = {{day_act_hour[i][j][4]}} day1 = "{{day_act_hour[i][j][5]}}" time1 = "{{day_act_hour[i][j][6]}}">{{day_act_hour[i][j][7]}}</td>
+                          {% endif %}
+                        {% endfor %}
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let offset1 = document.querySelector('#offset').textContent;
+        const list_act = ['com1(입력)','com2(입력)','com3(입력)','com4(입력)','com5(입력)','am07(입력)','am08(입력)',
+        'am09(입력)','am10(입력)','am11(입력)','am12(입력)','pm01(입력)','pm02(입력)','pm03(입력)','pm04(입력)','pm05(입력)',
+        'pm06(입력)','pm07(입력)','pm08(입력)','late(입력)'];
+        const list_name = {'com1':'중요활동1','com2':'중요활동2','com3':'중요활동3','com4':'중요활동4','com5':'중요활동5','am07':'오전7시','am08':'오전8시',
+        'am09':'오전9시','am10':'오전10시','am11':'오전11시','am12':'오전12시','pm01':'오후1시',
+        'pm02':'오후2시','pm03':'오후3시','pm04':'오후4시','pm05':'오후5시','pm06':'오후6시',
+        'pm07':'오후7시','pm08':'오후8시','late':'저녁시간'};
+        const input_7th = {};
+        const week_role_input = {};
+        const day_act_input = {};
+        const mo1 = document.querySelector(".modalDiv");
+        const submodal1 = document.querySelector('#role_target');
+          const roleId = document.querySelector('#role_id')
+          // const roleEmail = document.querySelector('#role_email')
+          const roleYear = document.querySelector('#role_year')
+          const roleWeek = document.querySelector('#role_week')
+          const roleText = document.querySelector('#role_text')
+          const roleStatus = document.querySelector('#role_status')
+          const roleOrder = document.querySelector('#role_order')
+        const submodal2 = document.querySelector('#habbit7_target');
+          // const submodal2Week = document.querySelector('#habbit7_target');
+          const id7th = document.querySelector('#id_7th');
+          const text7th = document.querySelector('#text_7th');
+          const year7th = document.querySelector('#year_7th');
+          const week7th = document.querySelector('#week_7th');
+          const cate7th = document.querySelector('#cate_7th');
+        const submodal3 = document.querySelector('#week_summary_target');
+          const roleIdWeek = document.querySelector('#role_week_id')
+          const roleYearWeek = document.querySelector('#role_week_year')
+          const roleWeekWeek = document.querySelector('#role_week_week')
+          const roleTextWeek = document.querySelector('#role_week_text')
+          const roleStatusWeek = document.querySelector('#role_week_status')
+          const roleOrderWeek = document.querySelector('#role_week_order')
+        const submodal4 = document.querySelector('#thisweek_activity_target');
+        // const submodal1_1 = document.querySelector('#role_text');
+        // const submodal2_1 = document.querySelector('#habbit7_target_text');
+        // const submodal3_1 = document.querySelector('#week_summary_target_text');
+        const submodal4_1 = document.querySelector('#thisweek_activity_target_text');
+        const submodal4_text = document.querySelector('#thisweek_activity_text');
+        const btn1 = document.querySelector('#submit_role');
+        const btn2 = document.querySelector('#submit_habbit7');
+        const btn3 = document.querySelector('#submit_week_summary');
+        const btn4 = document.querySelector('#submit_thisweek_activity');
+        let btn4_target
+        function modal_control(e) {
+            const pNode = e.target.parentNode;
+            const selfNode = e.target;
+            if (selfNode.classList[0]) {
+                // console.log('눌렸음!',selfNode,"\n",typeof(selfNode.classList[0]),selfNode.classList[0]);
+                // console.log(selfNode.getAttribute('role1'))
+                // console.log(pNode, pNode.classList[0],pNode.parentNode.parentNode.id);
+                // console.log(e);
+                        // 모달 컨트롤 부분
+                mo1.style.display ="block";
+                if (pNode.parentNode.parentNode.id === "role"){
+                  const roleBtn = document.querySelector('#role_target_sub1');
+                  roleBtn.value = selfNode.getAttribute('role1');
+                  submodal1.style.display = "block";
+                  if (selfNode.textContent != '등록'){
+                      roleText.setAttribute('value',selfNode.textContent);
+                    }else{
+                      roleText.setAttribute('value','');
+                    }
+                    roleId.value = selfNode.getAttribute('id1');
+                    roleYear.value = selfNode.getAttribute('year1');
+                    roleWeek.value = selfNode.getAttribute('week1');
+                    roleOrder.value = selfNode.getAttribute('order1');
+
+                  submodal2.style.display = "none";
+                  submodal3.style.display = "none";
+                  submodal4.style.display = "none";
+                }else if(pNode.parentNode.parentNode.id ==="habbit7") {
+                  submodal1.style.display = "none";
+                  submodal2.style.display = "block";
+                  text7th.setAttribute('value',selfNode.textContent);
+                  id7th.value = selfNode.getAttribute('id1');
+                  year7th.value = selfNode.getAttribute('year1');
+                  week7th.value = selfNode.getAttribute('week1');
+                  cate7th.value = selfNode.getAttribute('cate1');
+                  submodal3.style.display = "none";
+                  submodal4.style.display = "none";
+                }else if(pNode.parentNode.parentNode.id === "week_summary") {
+                  submodal1.style.display = "none";
+                  submodal2.style.display = "none";
+                  submodal3.style.display = "block";
+                  // if (selfNode.textContent != '(등록)'){
+                  // submodal3_1.setAttribute('value',selfNode.textContent);
+                  // }
+
+                  if (selfNode.textContent != '(등록)'){
+                      roleTextWeek.setAttribute('value',selfNode.firstElementChild.textContent);
+                    }else{
+                      roleTextWeek.setAttribute('value','');
+                    }
+                    // roleEmail.value = selfNode.getAttribute('email1')
+                    roleIdWeek.value = selfNode.getAttribute('id1')
+                    roleYearWeek.value = selfNode.getAttribute('year1')
+                    roleWeekWeek.value = selfNode.getAttribute('week1')
+                    // roleStatus.value = selfNode.getAttribute('status1')
+
+                  submodal4.style.display = "none";
+                }else{
+                  submodal1.style.display = "none";
+                  submodal2.style.display = "none";
+                  submodal3.style.display = "none";
+                  submodal4.style.display = "block";
+                  submodal4_text.textContent = selfNode.getAttribute('date1') +'(' +selfNode.getAttribute('day1') + ') : ' +
+                  list_name[pNode.classList[0]];
+                  
+                  if (list_act.indexOf(selfNode.textContent)<0)
+                  {submodal4_1.setAttribute.value = selfNode.textContent;
+                    // ('value',selfNode.textContent);
+                    console.log("왜 무시되지?", selfNode.textContent);
+                  }else{
+                    submodal4_1.value = '';
+                    // setAttribute('value','');
+                  }
+                  
+                  day_act_input['id'] = selfNode.getAttribute('id1');
+                  console.log(selfNode.getAttribute('id1'));
+                  day_act_input['email'] = selfNode.getAttribute('email1');
+                  day_act_input['year'] = selfNode.getAttribute('year1');
+                  day_act_input['week'] = selfNode.getAttribute('week1');
+                  day_act_input['date'] = selfNode.getAttribute('date1');
+                  day_act_input['day'] = selfNode.getAttribute('day1');
+                  day_act_input['time'] = selfNode.getAttribute('time1');
+                  btn4_target = selfNode;
+                }
+            }
+        }
+
+        function test2() {
+          console.log("눌리긴함")
+        }
+
+        function openModal(){
+          mo1.style.display ="block";
+          console.log(mo1);
+
+        };
+        function closeModal(){
+          mo1.style.display ="none";
+        };
+
+        function input_text(){
+          day_act_input['activity'] = submodal4_1.value; // 입력버튼 누를때 변경
+          fetch("http://www.tachyon.or.kr/insertDailyAcivity", {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(day_act_input),            
+          }).then((response) => response.json()
+          ).then(data => {
+            btn4_target.setAttribute('id1',data[0])
+            btn4_target.textContent = data[1];
+            mo1.style.display ="none";
+          }); // 정보를 다 입력 했으면 DB업데이트하러 가자
+        };
+
+        function offsetWeeksPlus() {
+          offset2 = Number(offset1) + 7;
+          window.location.href = "http://www.tachyon.or.kr/week/" + offset2;
+        }
+
+        function offsetWeeksMinus() {
+          offset2 = Number(offset1) - 7;
+          window.location.href = "http://www.tachyon.or.kr/week/" + offset2;
+        }
+        
+        const target_detail = document.querySelector('#thisweek_activity');
+        const target_summary = document.querySelector('#week_summary');
+        const roleNr = document.querySelector('#role');
+        const habbit7th = document.querySelector('#habbit7');
+        const preBtn = document.querySelector('#previous')
+        const nextBtn = document.querySelector('#next')
+        target_detail.addEventListener('click',modal_control);
+        target_summary.addEventListener('click',modal_control);
+        roleNr.addEventListener('click',modal_control);
+        habbit7th.addEventListener('click',modal_control);
+        preBtn.addEventListener('click',offsetWeeksMinus);
+        nextBtn.addEventListener('click',offsetWeeksPlus);
+        btn4.addEventListener('click',input_text);
+
+    </script>
+</body>
+</html>
+
+{% endblock %}

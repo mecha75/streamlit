@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- 타이틀에 해당하는 것을 블럭화한다. -->
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block header %}{% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"  />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css')}}" />
+
+</head>
+
+<body>
+  <!-- 네비게이션 바를 작성한다. -->
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('mission.index')}}">성공하는 사람들의 7가지 습관</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ url_for('mission.index')}}">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                습관3. 소중한것 먼저하기
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{{url_for('mission.index')}}">플랭클린플래너 조회</a></li>
+              <!-- </ul> -->
+              <li><hr class="dropdown-divider"></li>
+
+            </ul>
+              
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    습관2. Mission 수립(workshop)
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{url_for('mission.viewMySelf')}}">사명선언서(Mission Statement) 조회</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('crud.users')}}">다른 사람의 선언서 살펴보기</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('mission.rollAndAbility')}}">역할/역량조회</a></li>
+                    <li><a class="dropdown-item" href="{{url_for('mission.precious')}}"">소중한것 찾기 답안</a></li>
+                  <!-- </ul> -->
+                  <li><hr class="dropdown-divider"></li>
+<!-- 
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+                  <li style="background-color: azure; text-align: center;">(↓↓ workshop (직접작성) ↓↓)</li>
+                  <li><a class="dropdown-item" href="{{url_for('mission.findprecious')}}">소중한것 찾기 질문에 답하기</a></li>
+                  <li><a class="dropdown-item" href="{{url_for('mission.defineRollAndAbility')}}">역할/역량입력</a>
+                  <li><a class="dropdown-item" href="{{ url_for('mission.writeMission')}}">Mission Statement(사명선언서) 작성</a>
+                </ul>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('mission.viewMySelf')}}" target="blank"> Mission Pop-up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout')}}">로그아웃</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{ current_user.username}}</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('auth.signup')}}">신규등록</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('auth.login')}}">로그인</a>
+            </li>
+            {% endif %}
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.slim.min.js" integrity="sha512-5NqgLBAYtvRsyAzAvEBWhaW+NoB+vARl6QiA02AFMhCWvPpi7RWResDcTGYvQtzsHVCfiUhwvsijP+3ixUk1xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='js/app.js')}}"></script> -->
+
+</body>
+</html>

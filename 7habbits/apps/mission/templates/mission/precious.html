@@ -1,0 +1,76 @@
+{% extends "mission/base.html" %}
+{% block title %} mission {% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <button type="button" class="btn btn-secondary">{{current_user.username}}님의 소중한 것 찾기 답안</button>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">Question 1</button>
+            <p class="card-text">{{question[0]}}</p>
+            <p class="card-text" style="white-space: pre-wrap; ">{{answer[0][1]}}</p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">Question 2</button>
+            <p class="card-text">{{question[1]}}</p>
+            <p class="card-text" style="white-space: pre-wrap;">{{answer[0][2]}}</p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">Question 3</button>
+            <p class="card-text">{{question[2]}}</p>
+            <p class="card-text" style="white-space: pre-wrap;">{{answer[0][3]}}</p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">Question 4</button>
+            <p class="card-text">{{question[3]}}</p>
+            <p class="card-text" style="white-space: pre-wrap;">{{answer[0][4]}}</p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">Question 5</button>
+            <p class="card-text">{{question[4]}}</p>
+            <p class="card-text" style="white-space: pre-wrap;">{{answer[0][5]}}</p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem; overflow: auto;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">Question 6</button>
+            <p class="card-text">{{question[5]}}</p>
+            <p class="card-text" style="white-space: pre-wrap;"> {{answer[0][6]}}</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

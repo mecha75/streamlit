@@ -1,0 +1,1088 @@
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://10.1.3.91:8501
+  External URL: http://115.68.220.145:8501
+
+2024-10-21 00:16:18.841 st.navigation was called in an app with a pages/ directory. This may cause unusual app behavior. You may want to rename the pages/ directory.
+2024-10-21 00:16:24.727 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 668, in connect
+    self._get_server_information()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 1098, in _get_server_information
+    packet = self._read_packet()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 798, in _read_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales.py", line 13, in <module>
+    with engine.connect() as con:
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3278, in connect
+    return self._connection_cls(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 668, in connect
+    self._get_server_information()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 1098, in _get_server_information
+    packet = self._read_packet()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 798, in _read_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query')
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-10-21 00:17:13.623 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales.py", line 13, in <module>
+    with engine.connect() as con:
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3278, in connect
+    return self._connection_cls(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 979, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/_auth.py", line 267, in caching_sha2_password_auth
+    data = sha2_rsa_encrypt(conn.password, conn.salt, conn.server_public_key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/_auth.py", line 144, in sha2_rsa_encrypt
+    raise RuntimeError(
+RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods
+2024-10-21 00:18:13.496 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales.py", line 13, in <module>
+    with engine.connect() as con:
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3278, in connect
+    return self._connection_cls(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 979, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/_auth.py", line 267, in caching_sha2_password_auth
+    data = sha2_rsa_encrypt(conn.password, conn.salt, conn.server_public_key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/_auth.py", line 144, in sha2_rsa_encrypt
+    raise RuntimeError(
+RuntimeError: 'cryptography' package is required for sha256_password or caching_sha2_password auth methods
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://10.1.3.91:8501
+  External URL: http://115.68.220.145:8501
+
+2024-10-21 00:20:39.194 st.navigation was called in an app with a pages/ directory. This may cause unusual app behavior. You may want to rename the pages/ directory.
+2024-10-21 08:37:16.675 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/HVP1.py", line 11, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+2024-10-21 08:37:20.784 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/HVP_price.py", line 11, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+2024-10-21 08:37:22.609 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/RIM.py", line 10, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+2024-10-21 08:37:24.362 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/RIM_TB.py", line 10, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://10.1.3.91:8501
+  External URL: http://115.68.220.145:8501
+
+2024-10-21 08:42:26.765 st.navigation was called in an app with a pages/ directory. This may cause unusual app behavior. You may want to rename the pages/ directory.
+2024-10-23 00:46:41.628 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 798, in _read_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales.py", line 32, in <module>
+    result = con.execute(sql_lv3.where(and_(salesRecord.year == '2024',salesRecord.version == '(A)',
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 798, in _read_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query')
+[SQL: SELECT sales_record.year AS `YYYY`, sales_record.mm AS mm, sales_group.`Group_lv1_code` AS `lv1Code`, sales_group.`Group_lv1` AS `lv1Name`, sales_group.`Group_lv2_code` AS `lv2Code`, sales_group.`Group_lv2` AS `lv2Name`, sales_group.`Group_lv3_code` AS `lv3Code`, sales_group.`Group_lv3` AS `lv3Name`, sum((sales_record.`Sales` * ex_rate.rate) / %(param_1)s) AS sales, sum(sales_record.`EA` / %(EA_1)s) AS `kEA`, sum(sales_record.`Weight` / %(Weight_1)s) AS ton 
+FROM sales_record LEFT OUTER JOIN sales_group ON sales_record.`DistributeChannel` = sales_group.`DistributeChannel` AND sales_record.`SalesGroup` = sales_group.`SalesGroup` LEFT OUTER JOIN ex_rate ON sales_record.year = ex_rate.year AND sales_record.mm = ex_rate.mm AND sales_record.curr = ex_rate.curr AND ex_rate.version = concat(sales_record.year, %(concat_1)s) 
+WHERE sales_record.`SalesType` = %(SalesType_1)s AND sales_record.version = %(version_1)s AND sales_record.year = %(year_1)s AND sales_record.version = %(version_2)s AND (sales_record.`DistributeChannel` = %(DistributeChannel_1)s OR sales_record.`DistributeChannel` = %(DistributeChannel_2)s) GROUP BY `YYYY`, mm, `lv1Code`, `lv1Name`, `lv2Code`, `lv2Name`, `lv3Code`, `lv3Name` ORDER BY `lv1Code`, `lv2Code`, `lv3Code`]
+[parameters: {'param_1': 1000000, 'EA_1': 1000, 'Weight_1': 1000, 'concat_1': '-00-(A)', 'SalesType_1': '타이어매출', 'version_1': '(A)', 'year_1': '2024', 'version_2': '(A)', 'DistributeChannel_1': '10', 'DistributeChannel_2': '20'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-10-23 00:46:41.692 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 798, in _read_bytes
+    raise err.OperationalError(
+pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales.py", line 14, in <module>
+    result = con.execute(sql_lv1.where(and_(salesRecord.year == '2024',salesRecord.version == '(A)',
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 744, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pymysql/connections.py", line 798, in _read_bytes
+    raise err.OperationalError(
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (2013, 'Lost connection to MySQL server during query')
+[SQL: SELECT sales_record.year AS `YYYY`, sales_record.mm AS mm, sales_group.`Group_lv1_code` AS `lv1Code`, sales_group.`Group_lv1` AS `lv1Name`, sum((sales_record.`Sales` * ex_rate.rate) / %(param_1)s) AS sales, sum(sales_record.`EA` / %(EA_1)s) AS `kEA`, sum(sales_record.`Weight` / %(Weight_1)s) AS ton 
+FROM sales_record LEFT OUTER JOIN sales_group ON sales_record.`DistributeChannel` = sales_group.`DistributeChannel` AND sales_record.`SalesGroup` = sales_group.`SalesGroup` LEFT OUTER JOIN ex_rate ON sales_record.year = ex_rate.year AND sales_record.mm = ex_rate.mm AND sales_record.curr = ex_rate.curr AND ex_rate.version = concat(sales_record.year, %(concat_1)s) 
+WHERE sales_record.`SalesType` = %(SalesType_1)s AND sales_record.version = %(version_1)s AND sales_record.year = %(year_1)s AND sales_record.version = %(version_2)s AND (sales_record.`DistributeChannel` = %(DistributeChannel_1)s OR sales_record.`DistributeChannel` = %(DistributeChannel_2)s) GROUP BY `YYYY`, mm, `lv1Code`, `lv1Name` ORDER BY `lv1Code`]
+[parameters: {'param_1': 1000000, 'EA_1': 1000, 'Weight_1': 1000, 'concat_1': '-00-(A)', 'SalesType_1': '타이어매출', 'version_1': '(A)', 'year_1': '2024', 'version_2': '(A)', 'DistributeChannel_1': '10', 'DistributeChannel_2': '20'}]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-10-23 22:15:46.287 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 3, in <module>
+    st.write(toMonth)
+NameError: name 'toMonth' is not defined
+2024-10-23 22:31:27.836 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 23, in <module>
+    master_date.toMonth = option_month
+AttributeError: 'dict' object has no attribute 'toMonth'
+2024-10-23 22:31:54.982 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 25, in <module>
+    st.write(master_date[toMonth])
+NameError: name 'toMonth' is not defined
+2024-10-23 22:32:19.790 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 25, in <module>
+    st.write(master_date[toMonth])
+NameError: name 'toMonth' is not defined
+2024-10-23 22:32:20.752 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 25, in <module>
+    st.write(master_date[toMonth])
+NameError: name 'toMonth' is not defined
+2024-10-23 22:34:53.900 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 25, in <module>
+    master_date[toMonth] = option_month
+NameError: name 'toMonth' is not defined
+2024-10-23 22:35:21.046 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 25, in <module>
+    master_date[toMonth] = option_month
+NameError: name 'toMonth' is not defined
+2024-10-23 22:42:38.367 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/test_page.py", line 36, in <module>
+    master_date['beforeMonth'] = preMonth
+NameError: name 'preMonth' is not defined
+2024-10-23 22:46:55.430 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 10, in <module>
+    from test_page import master_date
+ModuleNotFoundError: No module named 'test_page'
+2024-10-23 22:47:16.577 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 10, in <module>
+    from pages.test_page import master_date
+ModuleNotFoundError: No module named 'test_page'
+2024-10-23 22:48:43.169 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 139, in <module>
+    pdf1_pre_list = call_lv1(previousYear,'(A)')
+NameError: name 'previousYear' is not defined
+2024-10-23 22:48:45.043 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 139, in <module>
+    pdf1_pre_list = call_lv1(previousYear,'(A)')
+NameError: name 'previousYear' is not defined
+2024-10-23 22:48:46.112 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 139, in <module>
+    pdf1_pre_list = call_lv1(previousYear,'(A)')
+NameError: name 'previousYear' is not defined
+2024-10-23 22:51:06.516 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '09'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 142, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '09'
+2024-10-23 22:51:23.542 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '09'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 142, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '09'
+2024-10-23 22:52:08.165 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '09'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 142, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '09'
+2024-10-23 22:52:22.819 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '09'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 142, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '09'
+2024-10-23 22:52:26.842 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '09'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 142, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '09'
+2024-10-23 22:53:22.549 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:53:31.694 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:54:00.503 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:54:22.094 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:54:23.721 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:54:27.835 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:54:30.420 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:55:12.668 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '09'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 142, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '09'
+2024-10-23 22:55:47.857 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:56:30.068 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:57:06.380 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    # previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 22:57:44.839 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 42, in <module>
+    # previousYear = master_date['preYear']
+KeyError: 'preYear'
+2024-10-23 23:03:31.346 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 38, in <module>
+    fromMonth = master_date['fromMonth']
+NameError: name 'master_date' is not defined
+2024-10-23 23:03:37.025 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 38, in <module>
+    fromMonth = master_date['fromMonth']
+NameError: name 'master_date' is not defined
+2024-10-23 23:03:38.329 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 38, in <module>
+    fromMonth = master_date['fromMonth']
+NameError: name 'master_date' is not defined
+2024-10-23 23:14:15.428 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 296, in run
+    code = ctx.pages_manager.get_page_script_byte_code(str(self._page))
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/pages_manager.py", line 331, in get_page_script_byte_code
+    return self._script_cache.get_bytecode(script_path)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_cache.py", line 72, in get_bytecode
+    filebody = magic.add_magic(filebody, script_path)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/magic.py", line 46, in add_magic
+    tree = ast.parse(code, script_path, "exec")
+  File "/usr/lib/python3.10/ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 50
+    st.cache_data.clear()
+    ^^
+IndentationError: expected an indented block after 'if' statement on line 47
+2024-10-23 23:15:22.075 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '09'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 182, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '09'
+2024-10-23 23:15:30.584 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '08'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 182, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '08'
+2024-10-23 23:16:57.988 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '08'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/exec_code.py", line 88, in exec_func_with_error_handling
+    result = func()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 579, in code_to_exec
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/app.py", line 14, in <module>
+    pg.run()
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/streamlit/navigation/page.py", line 303, in run
+    exec(code, module.__dict__)
+  File "/home/ubuntu/project/streamlit/pages/sales_report.py", line 183, in <module>
+    df_lv1 = mp.overview_sales(pdf1_pre_list, pdf1_plan_list, pdf1_list, toMonth, beforeMonth)
+  File "/home/ubuntu/project/streamlit/module_pdf.py", line 34, in overview_sales
+    show_list = pd.DataFrame([var_pre[i][last_month],var_plan[i][last_month],var_now[i][previous_month],var_now[i][last_month]],
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "/home/ubuntu/project/streamlit/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+KeyError: '08'
+  Stopping...

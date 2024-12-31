@@ -1,0 +1,71 @@
+{% extends "mission/base.html" %}
+{% block title %} mission {% endblock %}
+
+{% block content %}
+
+<form action="{{ url_for('mission.defineRollAndAbility') }}"
+    method="POST"
+    novalidate="novalidate"
+>
+    {{ form.csrf_token }}
+
+<div class="container-fluid">
+  <button type="button" class="btn btn-secondary">{{current_user.username}}님의 역할 및 역량</button>
+    <div class="container-fluid">
+    <div class="row align-items-start">
+    <div class="col-sm-6">
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">개인의 역할</button>
+            <p class="card-text">
+                {{ form.roll(placeholder="개인의 역할을 정의하십시요.", class = "form-control", rows = "7") }}
+            </p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">잘하는 것</button>
+            <p class="card-text">
+                {{ form.area_avility(placeholder="잘하는 역량을 정의하십시요.", class = "form-control", rows = "7") }}
+            </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="col-sm-6">
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">잘하고 싶은 것</button>
+            <p class="card-text">{{ form.area_concern(placeholder="잘하고 싶은 것을 정의하십시요.", class = "form-control", rows = "7") }}
+            </p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div class="container">
+        <div class="card" style="width: inherit; height: 16rem;">
+            <div class="card-body">
+            <button type="button" class="btn btn-dark">약점</button>
+            <p class="card-text">
+                {{ form.area_weakness(placeholder="피하고 싶은 약점을 정의하십시요.", class = "form-control", rows = "7") }}
+            </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+<p><input class="btn btn-danger" type="submit" value={{nbutton}} style="float: right;"/></p>
+</div>
+
+</form>
+
+{% endblock %}

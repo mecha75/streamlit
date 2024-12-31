@@ -1,0 +1,15 @@
+credentials:
+  usernames:
+    superpower:
+      email: superpower@hanmail.net
+      name: Jeongsic Ra
+      password: '1111' # To be replaced with hashed password
+
+cookie:
+  expiry_days: 30  #만료일, 재인증이 필요 없을 경우 0으로 채팅
+  key: random_signature_key
+  name: random_cookie_name
+preauthorized:
+  emails:
+  - nerve751105@gmail.com
+  
