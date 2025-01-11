@@ -11,8 +11,8 @@ mysql_url = f"mysql+pymysql://{user1}:{pw1}@{ip1}/{db1}?charset=utf8"
 
 # Base config클래스 작성하기
 class BaseConfig:
-    SECRET_KEY = "skwjdtlrDLdoqasadrhdlTek"
-    WTF_CSRF_SECRET_KEY="lDAJadasadFdienfksudfk"
+    SECRET_KEY = "k"
+    WTF_CSRF_SECRET_KEY="k"
     # 이미지 업로드 경로에 apps/images를 지정한다.
     UPLOAD_FOLDER = str(Path(basedir,"apps","uploadfiles"))
     # UPLOAD_FOLDER_fx = str(Path(basedir,"apps","uploadfiles/fx"))
